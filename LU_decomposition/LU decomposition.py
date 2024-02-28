@@ -1,31 +1,9 @@
 #!/usr/bin/env python3
 
-import os
 import numpy as np
 
-def read_matrix(filePath: str) -> np.ndarray:
-    with open(os.path.join(os.path.dirname(__file__), filePath), "r") as file:
-        matrix = [[float(e) for e in row.split() if e] for row in file]
-    return np.array(matrix)
+from utils.io import export_matrix, export_vector, read_matrix, read_vector
 
-def read_vector(filePath: str) -> np.ndarray:
-    with open(os.path.join(os.path.dirname(__file__), filePath), "r") as file:
-        vector = [float(e) for e in file.read().split() if e]
-    return np.array(vector)
-
-def export_matrix(matrix: np.ndarray, filePath: str) -> None:
-    with open(os.path.join(os.path.dirname(__file__), filePath), "w") as file:
-        for row in matrix:
-            file.write(" ".join([str(e)[:11].ljust(12) for e in row]) + "\n")
-    return
-
-def export_vector(vector: np.ndarray, filePath: str) -> None:
-    with open(os.path.join(os.path.dirname(__file__), filePath), "w") as file:
-        file.write("\n".join([str(v)[:8].ljust(8) for v in vector]))
-    return 
-
-def identity_matrix(n: int) -> np.ndarray:
-    return np.eye(n)
 
 def main():
     
@@ -34,7 +12,7 @@ def main():
     # Read the input vector "ps.txt"
     vector = read_vector("inputs/vector.txt")
 
-    I = identity_matrix(len(matrix))
+    I = np.eye(len(matrix))
 
     for k in range(len(matrix)):
         for j in range(k+1, len(matrix)):
