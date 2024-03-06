@@ -5,25 +5,33 @@ import numpy as np
 
 from utils.io import export_matrix, export_vector, read_matrix, read_vector
 
+def lu(A: np.ndarray):
+    
+    #Get the number of rows
+    n = len(A)
+    
+    U = A.copy()
+    L = np.eye(n, dtype=np.double)
+    
+    #Loop over rows
+    for i in range(n):
+        factor = U[i+1:, i] / U[i, i]
+        L[i+1:, i] = factor
+        U[i+1:] -= factor[:, np.newaxis] * U[i]
+        
+    return L, U
+
+
 
 def main():
     
     # Read the input matrix "matica.txt"
-    matrix = read_matrix("inputs/matrix.txt", os.path.dirname(__file__))
-    # Read the input vector "ps.txt"
-    vector = read_vector("inputs/vector.txt", os.path.dirname(__file__))
+    A = read_matrix("inputs/matrix.txt", os.path.dirname(__file__))
 
-    I = np.eye(len(matrix))
+    L, U = lu(A)
 
-    for k in range(len(matrix)):
-        for j in range(k+1, len(matrix)):
-            I[j][k] = matrix[j][k] / matrix[k][k]
-            matrix[j][k:] -= I[j][k] * matrix[k][k:]
-
-    # Export the matrix "matica.txt" to "matica_out.txt"
-    export_matrix(matrix, "outputs/matrix.txt", os.path.dirname(__file__))
-    # Export the vector "ps.txt" to "ps_out.txt"
-    export_vector(vector, "outputs/vector.txt", os.path.dirname(__file__))
+    export_matrix(L, "outputs/L.txt", os.path.dirname(__file__))
+    export_matrix(U, "outputs/U.txt", os.path.dirname(__file__))
 
     return
 
