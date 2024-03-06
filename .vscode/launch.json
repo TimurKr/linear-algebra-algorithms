@@ -23,6 +23,12 @@
       "module": "gauss_elimination.main"
     },
     {
+      "name": "SOR: debug",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "SOR.main"
+    },
+    {
       "name": "Python Debugger: Current File",
       "type": "debugpy",
       "request": "launch",

@@ -1,26 +1,9 @@
 #!/usr/bin/env python3
 
 import os
-import numpy as np
 
+from utils.algorithms import lu
 from utils.io import export_matrix, export_vector, read_matrix, read_vector
-
-def lu(A: np.ndarray):
-    
-    #Get the number of rows
-    n = len(A)
-    
-    U = A.copy()
-    L = np.eye(n, dtype=np.double)
-    
-    #Loop over rows
-    for i in range(n):
-        factor = U[i+1:, i] / U[i, i]
-        L[i+1:, i] = factor
-        U[i+1:] -= factor[:, np.newaxis] * U[i]
-        
-    return L, U
-
 
 
 def main():

@@ -4,26 +4,9 @@ import os
 import sys
 import numpy as np
 from LU_decomposition.main import lu
+from utils.algorithms import backward_substitution, forward_substitution
 
 from utils.io import export_matrix, export_vector, read_matrix, read_vector
-
-def forward_substitution(M: np.ndarray, y: np.ndarray):
-    n = len(M)
-    x = np.zeros_like(y, dtype=np.double)
-    
-    for i in range(n):
-        x[i] = (y[i] - np.dot(M[i, :i], x[:i])) / M[i, i]
-        
-    return x
-
-def backward_substitution(M: np.ndarray, y: np.ndarray):
-    n = len(M)
-    x = np.zeros_like(y, dtype=np.double)
-    
-    for i in range(n-1, -1, -1):
-        x[i] = (y[i] - np.dot(M[i, i+1:], x[i+1:])) / M[i, i]
-        
-    return x
 
 def main():
     
