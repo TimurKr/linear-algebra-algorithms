@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import sys
-import numpy as np
-from LU_decomposition.main import lu
+from lu_decomposition import lu
 from utils.algorithms import backward_substitution, forward_substitution
 
 from utils.io import export_matrix, export_vector, read_matrix, read_vector
@@ -22,7 +20,7 @@ def main():
     x = backward_substitution(U, y)
 
     # Export the matrix "matica.txt" to "matica_out.txt"
-    export_vector(x, "outputs/vector.txt", os.path.dirname(__file__))
+    export_vector(x, "outputs/gauss_elimination.txt", os.path.dirname(__file__))
 
     return
 

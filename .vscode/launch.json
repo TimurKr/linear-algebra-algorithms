@@ -8,25 +8,31 @@
       "name": "QR_decomposition: debug",
       "type": "debugpy",
       "request": "launch",
-      "module": "QR_decomposition.main"
+      "module": "qr_decomposition"
     },
     {
       "name": "LU_decomposition: debug",
       "type": "debugpy",
       "request": "launch",
-      "module": "LU_decomposition.main"
+      "module": "lu_decomposition"
     },
     {
       "name": "gauss_elimination: debug",
       "type": "debugpy",
       "request": "launch",
-      "module": "gauss_elimination.main"
+      "module": "gauss_elimination"
     },
     {
       "name": "SOR: debug",
       "type": "debugpy",
       "request": "launch",
-      "module": "SOR.main"
+      "module": "sor"
+    },
+    {
+      "name": "Steepest decent: debug",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "steepest_decent"
     },
     {
       "name": "Python Debugger: Current File",
