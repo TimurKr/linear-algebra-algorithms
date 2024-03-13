@@ -24,7 +24,7 @@ def main():
         matrix[k:][k:] -= 2 * u_k*(u_k * matrix[k:][k:])
 
     # Export the matrix "matica.txt" to "matica_out.txt"
-    export_matrix(matrix, "outputs/matrix.txt", os.path.dirname(__file__))
+    export_matrix(matrix, "outputs/qr.txt", os.path.dirname(__file__))
 
     return
 

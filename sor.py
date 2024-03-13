@@ -25,14 +25,10 @@ def main():
         if np.linalg.norm(x - x_prev) < 10**-6:
             break
 
+        print("TODO: Dorobiť")
+
         # Loops forever...
         break 
-    
-
-    L, U = lu(A)
-
-    export_matrix(L, "outputs/L.txt", os.path.dirname(__file__))
-    export_matrix(U, "outputs/U.txt", os.path.dirname(__file__))
 
     return
 
