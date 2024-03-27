@@ -35,6 +35,12 @@
       "module": "steepest_decent"
     },
     {
+      "name": "CRS: debug",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "CRS"
+    },
+    {
       "name": "Python Debugger: Current File",
       "type": "debugpy",
       "request": "launch",

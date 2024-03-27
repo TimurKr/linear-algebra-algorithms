@@ -33,3 +33,25 @@ def backward_substitution(M: np.ndarray, y: np.ndarray):
         x[i] = (y[i] - np.dot(M[i, i+1:], x[i+1:])) / M[i, i]
         
     return x
+
+def multiplication(A: np.ndarray, x: np.ndarray):
+    n = len(A)
+    y = np.zeros(n, dtype=np.double)
+    
+    for i in range(n):
+        y[i] = sum(A[i, j] * x[j] for j in range(n))
+        
+    return y
+
+def crs_multiplication(vals: list[float], col_ind: list[int], row_ptr: list[int], x: np.ndarray):
+    n = len(row_ptr) - 1
+    y = np.zeros(n, dtype=np.double)
+    
+    if n > 10:
+        print(f"CRS for large matrix, size: {n}x{n}", flush=True)
+        print(f"Doing {len(vals)} multiplications instead of {n**2}", flush=True)
+
+    for i in range(n):
+        y[i] = sum(vals[j] * x[col_ind[j]] for j in range(row_ptr[i], row_ptr[i+1]))
+        
+    return y
