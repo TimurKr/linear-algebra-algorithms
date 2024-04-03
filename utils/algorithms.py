@@ -43,15 +43,19 @@ def multiplication(A: np.ndarray, x: np.ndarray):
         
     return y
 
+def dot(a: np.ndarray, b: np.ndarray):
+    return sum(ai * bi for ai, bi in zip(a, b))
+
 def crs_multiplication(vals: list[float], col_ind: list[int], row_ptr: list[int], x: np.ndarray):
-    n = len(row_ptr) - 1
+    n = len(row_ptr)
     y = np.zeros(n, dtype=np.double)
     
-    if n > 10:
-        print(f"CRS for large matrix, size: {n}x{n}", flush=True)
-        print(f"Doing {len(vals)} multiplications instead of {n**2}", flush=True)
+    # if n > 10:
+    #     print(f"CRS for large matrix, size: {n}x{n}", flush=True)
+    #     print(f"Doing {len(vals)} multiplications instead of {n**2}", flush=True)
 
-    for i in range(n):
+    for i in range(n-1):
         y[i] = sum(vals[j] * x[col_ind[j]] for j in range(row_ptr[i], row_ptr[i+1]))
+    y[-1] = sum(vals[j] * x[col_ind[j]] for j in range(row_ptr[i+1], len(vals)))
         
     return y

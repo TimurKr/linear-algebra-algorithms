@@ -3,7 +3,7 @@ import numpy as np
 
 
 def read_matrix(filePath: str, dir: str) -> np.ndarray:
-  with open(os.path.join(dir, filePath), "r") as file:
+  with open(os.path.join(dir, filePath), "r", encoding='windows-1254') as file:
     matrix = [[float(e) for e in row.split() if e] for row in file]
   return np.array(matrix, dtype=float)
 
