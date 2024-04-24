@@ -47,6 +47,12 @@
       "module": "bicgstab"
     },
     {
+      "name": "MM: debug",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "power_method"
+    },
+    {
       "name": "Python Debugger: Current File",
       "type": "debugpy",
       "request": "launch",
